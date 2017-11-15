@@ -4,8 +4,11 @@ var burger = require('../models/burger.js');
 
 router.get('/', function (req, res) {
 	// res.redirect('/burgers');
-	res.send("hi");
 	console.log("yo");
+	burger.selectAll( function(burgerData){
+		console.log(burgerData);
+		res.render("index", { burger_data: burgerData })
+	})
 });
 /*
 // Create all our routes and set up logic within those routes where required.
