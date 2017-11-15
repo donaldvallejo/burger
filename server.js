@@ -1,5 +1,5 @@
 var express = require("express");
-// var methodoverride = require("method-override");
+var methodoverride = require("method-override");
 var bodyparser = require("body-parser");
 var port = process.env.PORT || 3000;
 
@@ -9,10 +9,11 @@ app.use(express.static("public"));
 app.use(bodyparser.urlencoded({ extended: false }));
 
 var exphbs = require("express-handlebars");
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var routes = require('./controllers/burgers_controller.js');
+var routes = require('./controllers/burgerController.js');
 app.use('/', routes);
 
 app.listen(port);
