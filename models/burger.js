@@ -1,4 +1,8 @@
 const orm = require("../config/orm.js");
+// ORM = cares about the db stuff and only db stuff
+// model = only cares about creating a js object that makes it easier to talk to the db
+// controller = requires our model and we can call `burger.selectAll(` in our routes
+// view = show me the burger ui
 
 var burger = {
   selectAll: function(cb) {
@@ -6,17 +10,15 @@ var burger = {
       cb(res);
     });
   },
-  // The variables cols and vals are arrays.
-  // insertOne: function(cols, vals, cb) {
-  //   orm.create("burgers", cols, vals, function(res) {
-  //     cb(res);
-  //   });
-  // },
-  // updateOne: function(objColVals, condition, cb) {
-  //   orm.update("burgers", objColVals, condition, function(res) {
-  //     cb(res);
-  //   });
-  // }
+  insertOne: function(name, cb) {
+   orm.create("burgers", ["burger_name", "devoured"], [name, false], cb);
+ },
+ updateOne: function(id, cb) {
+   var condition = "id=" + id;
+   orm.update("burgers", {
+     devoured: true
+   }, condition, cb);
+ }
 };
 
   module.exports = burger;
