@@ -7,25 +7,31 @@ var burger = require('../models/burger.js');
 // controller = requires our model and we can call `burger.selectAll(` in our routes
 // view = show me the burger ui
 
-router.post("/burger/create", function(req, res) {
-  // burger create goes here
+router.get('/', function(req, res) {
+	res.redirect('/burgers');
+})
+
+router.get('/burgers',function(req, res) {
+	res.selectAll()
+})
+
+router.get('/', function (req, res) {
+	res.redirect('/burgers');
+	console.log("yo");
+	burger.selectAll( function(burgerData){
+		console.log(burgerData);
+		res.render("index", { burger_data: burgerData })
+	})
 });
 
 router.put("/burger/update/:id", function(req, res) {
-  // burger.update() call:
-  // burger.update(req.params.id, function() {  // <= this anonymous function == cb in the method signature
-  //  // change the view here
-  // });
+  burger.update() call:
+  burger.update(req.params.id, function() {  // <= this anonymous function == cb in the method signature
+   // change the view here
+  });
 });
 
-// router.get('/', function (req, res) {
-// 	res.redirect('/burgers');
-// 	console.log("yo");
-// 	burger.selectAll( function(burgerData){
-// 		console.log(burgerData);
-// 		res.render("index", { burger_data: burgerData })
-// 	})
-// });
+
 //
 // router.post("/api/cats", function(req, res) {
 //   burger.insertOne([
