@@ -24,6 +24,12 @@ router.get('/', function (req, res) {
 	})
 });
 
+router.post('/burgers/create', function (req, res) {
+	burger.insertOne('burger_name', req.body.name, function() {
+		res.redirect('/burgers');
+	});
+});
+
 router.put("/burger/update/:id", function(req, res) {
   burger.update() call:
   burger.update(req.params.id, function() {  // <= this anonymous function == cb in the method signature
@@ -32,7 +38,7 @@ router.put("/burger/update/:id", function(req, res) {
 });
 
 
-//
+
 // router.post("/api/cats", function(req, res) {
 //   burger.insertOne([
 //     "name", "sleepy"
