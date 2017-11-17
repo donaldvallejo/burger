@@ -11,7 +11,7 @@ var burger = {
     });
   },
   insertOne: function(name, cb) {
-   orm.create("burgers", ["burger_name", "devoured"], [name, false], cb);
+   orm.create("burgers", ["burgerData", "devoured"], [name, false], cb);
  },
  updateOne: function(id, cb) {
    var condition = "id=" + id;

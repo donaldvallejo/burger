@@ -30,13 +30,15 @@ router.post('/burgers/create', function (req, res) {
 	});
 });
 
-router.put("/burger/update/:id", function(req, res) {
-  burger.update() call:
-  burger.update(req.params.id, function() {  // <= this anonymous function == cb in the method signature
-   // change the view here
-  });
+router.put('/burgers/update/devour/:id', function (req, res) {
+	burger.updateOne('devoured', req.params.id, function() {
+		res.redirect('/burgers');
+	});
 });
 
+router.use(function (req, res) {
+	res.redirect('/burgers');
+});
 
 
 // router.post("/api/cats", function(req, res) {
