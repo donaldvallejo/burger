@@ -40,7 +40,6 @@ router.use(function (req, res) {
 	res.redirect('/burgers');
 });
 
-
 // router.post("/api/cats", function(req, res) {
 //   burger.insertOne([
 //     "name", "sleepy"
