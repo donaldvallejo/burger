@@ -75,6 +75,5 @@ router.use(function (req, res) {
 //       res.status(200).end();
 //     }
 //   });
-});
 // Export routes for server.js to use.
 module.exports = router;
